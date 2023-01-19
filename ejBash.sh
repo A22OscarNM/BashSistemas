@@ -1,7 +1,8 @@
 #!/bin/bash
 echo `clear`
 salir=true;
-cyan='\e[0;36m'
+green='\e[0;32m'
+red='\e[0;31m'
 purple='\e[0;95m'
 blue='\e[0;34m'
 echo -e "${purple}██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗"
@@ -16,17 +17,16 @@ sleep 2
 function menu(){
 	echo `clear`
 	sleep 1
-	echo -e "${blue}╔══════════════════════════════════════════════════════════════╗"
-	echo "║               Escoge una de estas opciones:                  ║"
+	echo -e "${purple}╔══════════════════════════════════════════════════════════════╗"
+	echo -e "║               ${blue}Escoge una de estas opciones:                  ${purple}║"
 	echo "╠══════════════════════════════════════════════════════════════╣"
-	echo "▓   1. Muestra el contenido de un archivo o carpeta            ▓"
-	echo "▓   2. Modifica los permisos de una carpeta o archivo          ▓"
-	echo "▒   3. Añadirle contenido a un fichero (si no existe lo crea)  ▒"
-	echo "▒   4. Elevar un número a otro                                 ▒"
-	echo "░   5. Crear un Hola Mundo automatico                          ░"
-	echo "░   6. Salir del programa                                      ░"
-	echo "╚══════════════════════════════════════════════════════════════╝"
-
+	echo -e "▓   ${blue}1. Muestra el contenido de un archivo o carpeta            ${purple}▓"
+	echo -e "▓   ${blue}2. Modifica los permisos de una carpeta o archivo          ${purple}▓"
+	echo -e "▒   ${blue}3. Añadirle contenido a un fichero (si no existe lo crea)  ${purple}▒"
+	echo -e "▒   ${blue}4. Elevar un número a otro                                 ${purple}▒"
+	echo -e "░   ${blue}5. Crear un Hola Mundo automatico                          ${purple}░"
+	echo -e "░   ${blue}6. Salir del programa                                      ${purple}░"
+	echo -e "╚══════════════════════════════════════════════════════════════╝${green}"
 	read -p "Escribe el número correspondiente a la opcion: " answer
 	return $answer;
 }
@@ -39,12 +39,12 @@ function content(){
 		then
 			if [ -d $ruta ]
 			then
-				echo `ls $ruta`
+				echo -e `ls $ruta`"${red}"
 			else
-				echo `cat $ruta`
+				echo -e `cat $ruta`"${red}"
 			fi
 		else
-			echo No existe la ruta especificada
+			echo -e "No existe la ruta especificada ${red}"
 		fi
 	read  -p "(Pulsa enter para continuar)" enter
 }
@@ -59,9 +59,9 @@ function permiso(){
 	then
 		read -p "Escribe los permisos que quieras añadirle (En binario, ej: 700): " permisos
 		echo `chmod $permisos $rutaPer`
-		echo `ls -la $rutaPer`
+		echo -e `ls -la $rutaPer`"${red}"
 	else
-		echo No existe la ruta especificada
+		echo -e "No existe la ruta especificada ${red}"
 	fi
 	read  -p "(Pulsa enter para continuar)" enter
 }
@@ -69,25 +69,25 @@ function permiso(){
 function anhadir(){
 	echo `clear`
 	sleep 1
-	read -p "Escrbie la ruta del fichero a modificar: " rutaMod
+	read -p "Escribe la ruta del fichero a modificar: " rutaMod
 	read -p "Escribe el contenido que quieres agregarle: " cont
-	echo `echo $cont >>  $rutaMod`
-	read  -p "(Pulsa enter para continuar)" enter
+	echo -e `echo $cont >> $rutaMod`"${red}"
+	read -p "(Pulsa enter para continuar)" enter
 }
 
 function potencia(){
 	echo `clear`
 	sleep 1
-	read -p "Escrbie el número base: " base
+	read -p "Escribe el número base: " base
 	read -p "Escribe la potencia del número: " numPotencia
 
 	i=1
 	if [ $numPotencia -eq 1 ]
 	then
-		echo $base
+		echo -e $base"${red}"
 	elif [ $numPotencia -eq 0 ]
 	then
-		echo 1
+		echo -e "1${red}"
 	else
 		newBase=$base
 		while(( i < numPotencia))
@@ -95,7 +95,7 @@ function potencia(){
 			newBase=$(($newBase * $base))
 			((i++))
 		done
-		echo $newBase
+		echo -e $newBase"${red}"
 	fi
 	read  -p "(Pulsa enter para continuar)" enter
 }
@@ -108,7 +108,7 @@ function holaMundo(){
 	#Por si acaso (ya se que no esta bien esta practica)
 	echo `chmod 777 $fichero.sh`
 	echo "" >> $fichero.sh
-	echo "echo Hola Mundo" >> $fichero.sh
+	echo -e "echo Hola Mundo" >> $fichero.sh
 	read  -p "(Pulsa enter para continuar)" enter
 }
 
@@ -135,7 +135,8 @@ do
 		salir=false
 		;;
 		*)
-		echo No has selecionado una opcion de las proporcionadas
+		echo -e "${red}No has selecionado una opcion de las proporcionadas"
+		sleep 2
 		;;
 	esac
 done
