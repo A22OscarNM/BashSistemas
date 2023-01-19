@@ -1,29 +1,30 @@
 #!/bin/bash
 echo `clear`
 salir=true;
-
-
-echo "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗"
+cyan='\e[0;36m'
+purple='\e[0;95m'
+blue='\e[0;34m'
+echo -e "${purple}██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗"
 echo "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝"
 echo "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  " 
 echo "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  "
 echo "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗"
 echo " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝"
-                                                                                  
+sleep 2                                                                            
 
 
 function menu(){
+	echo `clear`
 	sleep 1
-	echo ""
-	echo "╔══════════════════════════════════════════════════════════════╗"
+	echo -e "${blue}╔══════════════════════════════════════════════════════════════╗"
 	echo "║               Escoge una de estas opciones:                  ║"
 	echo "╠══════════════════════════════════════════════════════════════╣"
-	echo "▓    1. Muestra el contenido de un archivo o carpeta           ▓"
-	echo "▓    2. Modifica los permisos de una carpeta o archivo         ▓"
-	echo "▒    3. Añadirle contenido a un fichero (si no existe lo crea) ▒"
-	echo "▒    4. Elevar un número a otro                                ▒"
-	echo "░    5. Crear un Hola Mundo automatico                         ░"
-	echo "░    6. Salir del programa                                     ░"
+	echo "▓   1. Muestra el contenido de un archivo o carpeta            ▓"
+	echo "▓   2. Modifica los permisos de una carpeta o archivo          ▓"
+	echo "▒   3. Añadirle contenido a un fichero (si no existe lo crea)  ▒"
+	echo "▒   4. Elevar un número a otro                                 ▒"
+	echo "░   5. Crear un Hola Mundo automatico                          ░"
+	echo "░   6. Salir del programa                                      ░"
 	echo "╚══════════════════════════════════════════════════════════════╝"
 
 	read -p "Escribe el número correspondiente a la opcion: " answer
@@ -31,8 +32,8 @@ function menu(){
 }
 
 function content(){
+	echo `clear`
 	sleep 1
-	echo ""
 	read -p "Escribe la ruta del archivo: " ruta
 		if [ -e $ruta ]
 		then
@@ -45,13 +46,14 @@ function content(){
 		else
 			echo No existe la ruta especificada
 		fi
+	read  -p "(Pulsa enter para continuar)" enter
 }
 
 #En windows no me funcina bien esta parte ya que no me deja modificar los permisos,
 #pero lo probe en mi Debian y me va perfecto.
 function permiso(){
+	echo `clear`
 	sleep 1
-	echo ""
 	read -p "Escribe la ruta del archivo: " rutaPer
 	if [ -e $rutaPer ]
 	then
@@ -61,19 +63,21 @@ function permiso(){
 	else
 		echo No existe la ruta especificada
 	fi
+	read  -p "(Pulsa enter para continuar)" enter
 }
 
 function anhadir(){
+	echo `clear`
 	sleep 1
-	echo ""
 	read -p "Escrbie la ruta del fichero a modificar: " rutaMod
 	read -p "Escribe el contenido que quieres agregarle: " cont
 	echo `echo $cont >>  $rutaMod`
+	read  -p "(Pulsa enter para continuar)" enter
 }
 
 function potencia(){
+	echo `clear`
 	sleep 1
-	echo ""
 	read -p "Escrbie el número base: " base
 	read -p "Escribe la potencia del número: " numPotencia
 
@@ -93,17 +97,19 @@ function potencia(){
 		done
 		echo $newBase
 	fi
+	read  -p "(Pulsa enter para continuar)" enter
 }
 
 function holaMundo(){
+	echo `clear`
 	sleep 1
-	echo ""
 	read -p "Escrbie el nombre del fichero: " fichero
 	echo "#!/bin/bash" >> $fichero.sh
 	#Por si acaso (ya se que no esta bien esta practica)
 	echo `chmod 777 $fichero.sh`
 	echo "" >> $fichero.sh
 	echo "echo Hola Mundo" >> $fichero.sh
+	read  -p "(Pulsa enter para continuar)" enter
 }
 
 while $salir
@@ -133,10 +139,10 @@ do
 		;;
 	esac
 done
-echo 
-echo "██████╗ ██╗   ██╗███████╗██╗"
-echo "██╔══██╗╚██╗ ██╔╝██╔════╝██║"
-echo "██████╔╝ ╚████╔╝ █████╗  ██║"
-echo "██╔══██╗  ╚██╔╝  ██╔══╝  ╚═╝"
-echo "██████╔╝   ██║   ███████╗██╗"
-echo "╚═════╝    ╚═╝   ╚══════╝╚═╝"
+echo `clear`
+echo -e "${purple}██╗ ██████╗ ██╗   ██╗███████╗██╗"
+echo "╚═╝ ██╔══██╗╚██╗ ██╔╝██╔════╝██║"
+echo "██╗ ██████╔╝ ╚████╔╝ █████╗  ██║"
+echo "██║ ██╔══██╗  ╚██╔╝  ██╔══╝  ╚═╝"
+echo "██║ ██████╔╝   ██║   ███████╗██╗"
+echo "╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝"
