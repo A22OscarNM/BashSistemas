@@ -2,17 +2,29 @@
 echo `clear`
 salir=true;
 
+
+echo "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗"
+echo "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝"
+echo "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  " 
+echo "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  "
+echo "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗"
+echo " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝"
+                                                                                  
+
+
 function menu(){
 	sleep 1
 	echo ""
-	echo "#####################################"
-	echo "Escoge una de estas opciones":
-	echo "1. Muestra el contenido de un archivo o carpeta"
-	echo "2. Modifica los permisos de una carpeta o archivo"
-	echo "3. Añadirle contenido a un fichero (si no existe lo crea)"
-	echo "4. Elevar un número a otro"
-	echo "5. Crear un Hola Mundo automatico"
-	echo "6. Salir del programa"
+	echo "╔══════════════════════════════════════════════════════════════╗"
+	echo "║               Escoge una de estas opciones:                  ║"
+	echo "╠══════════════════════════════════════════════════════════════╣"
+	echo "▓    1. Muestra el contenido de un archivo o carpeta           ▓"
+	echo "▓    2. Modifica los permisos de una carpeta o archivo         ▓"
+	echo "▒    3. Añadirle contenido a un fichero (si no existe lo crea) ▒"
+	echo "▒    4. Elevar un número a otro                                ▒"
+	echo "░    5. Crear un Hola Mundo automatico                         ░"
+	echo "░    6. Salir del programa                                     ░"
+	echo "╚══════════════════════════════════════════════════════════════╝"
 
 	read -p "Escribe el número correspondiente a la opcion: " answer
 	return $answer;
@@ -121,3 +133,10 @@ do
 		;;
 	esac
 done
+echo 
+echo "██████╗ ██╗   ██╗███████╗██╗"
+echo "██╔══██╗╚██╗ ██╔╝██╔════╝██║"
+echo "██████╔╝ ╚████╔╝ █████╗  ██║"
+echo "██╔══██╗  ╚██╔╝  ██╔══╝  ╚═╝"
+echo "██████╔╝   ██║   ███████╗██╗"
+echo "╚═════╝    ╚═╝   ╚══════╝╚═╝"
