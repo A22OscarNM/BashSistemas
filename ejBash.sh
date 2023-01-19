@@ -11,7 +11,7 @@ function menu(){
 	echo "2. Modifica los permisos de una carpeta o archivo"
 	echo "3. Añadirle contenido a un fichero (si no existe lo crea)"
 	echo "4. Elevar un número a otro"
-	echo "5. "
+	echo "5. Crear un Hola Mundo automatico"
 	echo "6. Salir del programa"
 
 	read -p "Escribe el número correspondiente a la opcion: " answer
@@ -83,6 +83,17 @@ function potencia(){
 	fi
 }
 
+function holaMundo(){
+	sleep 1
+	echo ""
+	read -p "Escrbie el nombre del fichero: " fichero
+	echo "#!/bin/bash" >> $fichero.sh
+	#Por si acaso (ya se que no esta bien esta practica)
+	echo `chmod 777 $fichero.sh`
+	echo "" >> $fichero.sh
+	echo "echo Hola Mundo" >> $fichero.sh
+}
+
 while $salir
 do
 	menu
@@ -100,7 +111,7 @@ do
 		potencia
 		;;
 		5)
-		
+		holaMundo
 		;;
 		6)
 		salir=false
