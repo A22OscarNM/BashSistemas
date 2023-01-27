@@ -1,5 +1,5 @@
 #!/bin/bash
-echo `clear`
+clear
 salir=true;
 green='\e[0;32m'
 red='\e[0;31m'
@@ -15,7 +15,7 @@ sleep 2
 
 
 function menu(){
-	echo `clear`
+	clear
 	sleep 1
 	echo -e "${purple}╔══════════════════════════════════════════════════════════════╗"
 	echo -e "║               ${blue}Escoge una de estas opciones:                  ${purple}║"
@@ -32,7 +32,7 @@ function menu(){
 }
 
 function content(){
-	echo `clear`
+	clear
 	sleep 1
 	read -p "Escribe la ruta del archivo: " ruta
 		if [ -e $ruta ]
@@ -52,7 +52,7 @@ function content(){
 #En windows no me funcina bien esta parte ya que no me deja modificar los permisos,
 #pero lo probe en mi Debian y me va perfecto.
 function permiso(){
-	echo `clear`
+	clear
 	sleep 1
 	read -p "Escribe la ruta del archivo: " rutaPer
 	if [ -e $rutaPer ]
@@ -67,7 +67,7 @@ function permiso(){
 }
 
 function anhadir(){
-	echo `clear`
+	clear
 	sleep 1
 	read -p "Escribe la ruta del fichero a modificar: " rutaMod
 	read -p "Escribe el contenido que quieres agregarle: " cont
@@ -76,7 +76,7 @@ function anhadir(){
 }
 
 function potencia(){
-	echo `clear`
+	clear
 	sleep 1
 	read -p "Escribe el número base: " base
 	read -p "Escribe la potencia del número: " numPotencia
@@ -101,7 +101,7 @@ function potencia(){
 }
 
 function holaMundo(){
-	echo `clear`
+	clear
 	sleep 1
 	read -p "Escrbie el nombre del fichero: " fichero
 	echo "#!/bin/bash" >> $fichero.sh
@@ -140,7 +140,7 @@ do
 		;;
 	esac
 done
-echo `clear`
+clear
 echo -e "${purple}██╗ ██████╗ ██╗   ██╗███████╗██╗"
 echo "╚═╝ ██╔══██╗╚██╗ ██╔╝██╔════╝██║"
 echo "██╗ ██████╔╝ ╚████╔╝ █████╗  ██║"
